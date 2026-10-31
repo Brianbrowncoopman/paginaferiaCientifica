@@ -8,11 +8,17 @@ const checkIsVideo = (url) => {
   return videoExtensions.some((ext) => url.toLowerCase().endsWith(ext));
 };
 
-// Configuración de galerías
+// Configuración de galerías con sus respectivos iconos SVG
 const galleries = {
   1: {
     title: "Imagenes Microscopio",
     showDetails: true,
+    // Icono de microscopio / lente
+    icon: (
+      <svg className="w-5 h-5 text-cyan-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"></path>
+      </svg>
+    ),
     items: Array.from({ length: 60 }, (_, i) => ({
       id: i + 1,
       title: `Muestra N° ${i + 1}`,
@@ -24,6 +30,12 @@ const galleries = {
   2: {
     title: "Imagenes Cultivo",
     showDetails: true,
+    // Icono de cultivo / matraz de laboratorio
+    icon: (
+      <svg className="w-5 h-5 text-cyan-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 5H9L8 4zM6 18h12a2 2 0 002-2v-1a6 6 0 00-6-6h-4a6 6 0 00-6 6v1a2 2 0 002 2z"></path>
+      </svg>
+    ),
     items: Array.from({ length: 60 }, (_, i) => ({
       id: i + 1,
       title: `Microorganismo ${i + 1}`,
@@ -35,10 +47,16 @@ const galleries = {
   3: {
     title: "Fotos del viaje",
     showDetails: false,
-    // Generación dinámica mixta: 1 al 60 son .jpeg, 61 en adelante son .mp4
+    // Icono de cámara / viaje
+    icon: (
+      <svg className="w-5 h-5 text-cyan-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
+      </svg>
+    ),
     items: Array.from({ length: 65 }, (_, i) => {
       const num = i + 1;
-      const isVideo = num > 60; // 61, 62, 63, etc., se marcan automáticamente como video
+      const isVideo = num > 60;
       return {
         id: num,
         image: isVideo ? `/fotosdelviaje/${num}.mp4` : `/fotosdelviaje/${num}.jpeg`
@@ -49,6 +67,12 @@ const galleries = {
     title: "Afiches",
     showDetails: false,
     isCleanView: true,
+    // Icono de afiche / documento
+    icon: (
+      <svg className="w-5 h-5 text-cyan-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+      </svg>
+    ),
     items: [
       { id: 1, image: "/afiches/1.jpeg" },
       { id: 2, image: "/afiches/2.png" }
@@ -59,8 +83,35 @@ const galleries = {
     isPoster: true,
     question: "¿Cómo la salinidad de los distintos cuerpos de agua afecta la biodiversidad de microorganismos de la línea costera de Algarrobo?",
     hypothesis: "El aumento de la salinidad en la línea costera de Algarrobo reduce la riqueza y diversidad de microorganismos dando como resultado un dominio de especies halófilas y halotolerantes.",
+    // Icono de póster / presentación
+    icon: (
+      <svg className="w-5 h-5 text-cyan-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+      </svg>
+    ),
     items: [
       { id: 1, image: "/poster.jpeg" }
+    ]
+  },
+  6: {
+    title: "Tablas y Datos",
+    isVerticalList: true, // NUEVO: Identificador para mostrarlo en lista vertical hacia abajo
+    // Icono de tablas / datos
+    icon: (
+      <svg className="w-5 h-5 text-cyan-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+      </svg>
+    ),
+    items: [
+      { id: 1, image: "/tablas/Tabladesalinidadpormuestraycantidaddemicroorganismos.jpeg", title: "Salinidad por Muestra y Cantidad de Microorganismos" },
+      { id: 2, image: "/tablas/estaeslafotodelatabla.jpeg", title: "Tabla de observación superficial de presencia de óxido en las muestras (cualitativa)" },
+      { id: 3, image: "/tablas/tabladedistribuciondeplacas.jpeg", title: "Tabla de Distribución de Placas" },
+      { id: 4, image: "/tablas/tabladeobservacionsuperficialdeplacasdia1.jpeg", title: "Tabla de observación superficial de placas día 1" },
+      { id: 5, image: "/tablas/tabladeobservacionsuperficialdeplacasdia2.jpeg", title: "Tabla de observación superficial de placas día 2" },
+      { id: 6, image: "/tablas/graficodedispercionsobrerelacionentresalinidadinicialyfinal.jpeg", title: "Grafico de dispersión sobre relación entre salinidad inicial y final" },
+      { id: 7, image: "/tablas/graficodelineassobrelarealcindelasalinidadconelniveldeoxido.jpeg", title: "Gráfico de líneas sobre la relación de la salinidad con el nivel de óxido" },
+      { id: 8, image: "/tablas/graficodebarrassobreelpromediodesalinidadinicialconlasalinidadfinal.jpeg", title: "Grafico de barras sobre el promedio de salinidad inicial con la salinidad final" },
+      { id: 9, image: "/tablas/graficodebarrassobreelpromediodesalinidadsegunloscuerposdeagua.jpeg", title: "Grafico de barras sobre el promedio de salinidad según los cuerpos de agua" }
     ]
   }
 };
@@ -69,6 +120,7 @@ export default function App() {
   const [activeGalleryKey, setActiveGalleryKey] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null); // Estado para imagen ampliada en lista vertical
 
   const activeGallery = activeGalleryKey ? galleries[activeGalleryKey] : null;
   const totalItems = activeGallery ? activeGallery.items.length : 0;
@@ -78,13 +130,13 @@ export default function App() {
   const isVideoItem = currentItem ? checkIsVideo(currentItem.image) : false;
 
   const nextImage = useCallback(() => {
-    if (totalItems > 0 && !activeGallery?.isPoster) {
+    if (totalItems > 0 && !activeGallery?.isPoster && !activeGallery?.isVerticalList) {
       setCurrentIndex((prev) => (prev + 1) % totalItems);
     }
   }, [totalItems, activeGallery]);
 
   const prevImage = useCallback(() => {
-    if (totalItems > 0 && !activeGallery?.isPoster) {
+    if (totalItems > 0 && !activeGallery?.isPoster && !activeGallery?.isVerticalList) {
       setCurrentIndex((prev) => (prev - 1 + totalItems) % totalItems);
     }
   }, [totalItems, activeGallery]);
@@ -92,11 +144,13 @@ export default function App() {
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (!activeGallery) return;
-      if (e.key === 'ArrowRight' && !isFullscreen) nextImage();
-      if (e.key === 'ArrowLeft' && !isFullscreen) prevImage();
+      if (e.key === 'ArrowRight' && !isFullscreen && !selectedImage && !activeGallery?.isVerticalList) nextImage();
+      if (e.key === 'ArrowLeft' && !isFullscreen && !selectedImage && !activeGallery?.isVerticalList) prevImage();
       if (e.key === 'Escape') {
         if (isFullscreen) {
           setIsFullscreen(false);
+        } else if (selectedImage) {
+          setSelectedImage(null);
         } else {
           setActiveGalleryKey(null);
         }
@@ -104,12 +158,13 @@ export default function App() {
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [activeGallery, nextImage, prevImage, isFullscreen]);
+  }, [activeGallery, nextImage, prevImage, isFullscreen, selectedImage]);
 
   const openGallery = (key) => {
     setActiveGalleryKey(key);
     setCurrentIndex(0);
     setIsFullscreen(false);
+    setSelectedImage(null);
   };
 
   return (
@@ -139,15 +194,16 @@ export default function App() {
               <p><strong>Integrantes:</strong> Mathilda Brown, Santiago Bello, Cristóbal Vera, Belén Pérez, Catherine Romero.</p>
             </div>
 
-            {/* Menú de Botones */}
+            {/* Menú de Botones con Iconos */}
             <div className="grid grid-cols-1 gap-3 pt-4 max-w-md mx-auto">
               {Object.keys(galleries).map((key) => (
                 <button
                   key={key}
                   onClick={() => openGallery(Number(key))}
-                  className="py-3 px-4 bg-gray-700/40 hover:bg-gray-600 border border-gray-600 hover:border-cyan-400 rounded-xl font-semibold text-base sm:text-lg transition-all duration-300 shadow-xl hover:scale-105 backdrop-blur-md cursor-pointer text-white"
+                  className="py-3 px-5 bg-gray-700/40 hover:bg-gray-600 border border-gray-600 hover:border-cyan-400 rounded-xl font-semibold text-base sm:text-lg transition-all duration-300 shadow-xl hover:scale-105 backdrop-blur-md cursor-pointer text-white flex items-center justify-center space-x-3"
                 >
-                  {galleries[key].title}
+                  <span>{galleries[key].icon}</span>
+                  <span>{galleries[key].title}</span>
                 </button>
               ))}
             </div>
@@ -156,8 +212,9 @@ export default function App() {
           /* --- MÓDULO PÓSTER --- */
           <div className="w-full space-y-4 animate-fade-in">
             <div className="flex justify-between items-center border-b border-gray-600/80 pb-3">
-              <h2 className="text-2xl sm:text-3xl font-bold text-cyan-300 drop-shadow-md">
-                {activeGallery.title}
+              <h2 className="text-2xl sm:text-3xl font-bold text-cyan-300 drop-shadow-md flex items-center space-x-2">
+                <span>{activeGallery.icon}</span>
+                <span>{activeGallery.title}</span>
               </h2>
               <button
                 onClick={() => setActiveGalleryKey(null)}
@@ -212,21 +269,88 @@ export default function App() {
               </div>
             )}
           </div>
+        ) : activeGallery.isVerticalList ? (
+          /* --- MÓDULO TABLAS Y DATOS (LISTA VERTICAL HACIA ABAJO) --- */
+          <div className="w-full space-y-6 animate-fade-in py-4">
+            <div className="flex justify-between items-center border-b border-gray-600/80 pb-3 sticky top-0 bg-black/70 backdrop-blur-md z-30 px-4 py-2 rounded-xl">
+              <h2 className="text-2xl sm:text-3xl font-bold text-cyan-300 drop-shadow-md flex items-center space-x-2">
+                <span>{activeGallery.icon}</span>
+                <span>{activeGallery.title}</span>
+              </h2>
+              <button
+                onClick={() => setActiveGalleryKey(null)}
+                className="px-4 py-2 bg-green-400/40 hover:bg-green-500/40 border border-gray-600 rounded-lg text-sm font-medium transition backdrop-blur-md cursor-pointer text-white"
+              >
+                ← Volver al Inicio
+              </button>
+            </div>
+
+            {/* Listado vertical centrado ocupando el máximo de pantalla */}
+            <div className="w-full flex flex-col items-center space-y-8 px-2">
+              {activeGallery.items.map((item) => (
+                <div key={item.id} className="w-full max-w-4xl flex flex-col items-center space-y-3 bg-black/50 p-4 sm:p-6 rounded-2xl border border-gray-700/60 backdrop-blur-md shadow-2xl">
+                  <div 
+                    className="w-full flex justify-center items-center cursor-zoom-in overflow-hidden rounded-xl"
+                    onClick={() => setSelectedImage(item)}
+                    title="Haz clic para ver en pantalla completa"
+                  >
+                    <img 
+                      src={item.image} 
+                      alt={item.title} 
+                      className="w-full h-auto max-h-[75vh] object-contain rounded-lg shadow-lg transition-transform duration-300 hover:scale-[1.01]"
+                    />
+                  </div>
+                  {item.title && (
+                    <div className="text-center w-full bg-black/70 py-3 px-4 rounded-xl border border-gray-700/50">
+                      <p className="text-base sm:text-lg font-semibold text-cyan-200">
+                        {item.title}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {/* Modal de Pantalla Completa para la lista vertical */}
+            {selectedImage && (
+              <div 
+                className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 cursor-zoom-out animate-fade-in"
+                onClick={() => setSelectedImage(null)}
+              >
+                <div className="relative max-w-7xl max-h-screen w-full h-full flex flex-col items-center justify-center p-2">
+                  <button 
+                    onClick={() => setSelectedImage(null)}
+                    className="absolute top-4 right-4 bg-gray-800/80 hover:bg-red-600 text-white px-4 py-2 rounded-lg font-bold border border-gray-600 transition shadow-lg z-50 cursor-pointer"
+                  >
+                    ✕ Cerrar Pantalla Completa
+                  </button>
+                  <img 
+                    src={selectedImage.image} 
+                    alt="Pantalla Completa" 
+                    className="max-w-full max-h-[85vh] object-contain rounded-md shadow-2xl mb-3"
+                  />
+                  {selectedImage?.title && (
+                    <p className="text-cyan-300 text-base sm:text-lg font-medium text-center bg-black/80 px-4 py-2 rounded-lg border border-gray-700">
+                      {selectedImage.title}
+                    </p>
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
         ) : (
-          /* --- MÓDULOS DE CARRUSEL (AUTOMÁTICO IMAGEN / VIDEO) --- */
+          /* --- MÓDULOS DE CARRUSEL (RESTO DE MÓDULOS) --- */
           <div className="w-full space-y-4">
             <div className="flex justify-between items-center border-b border-gray-600/80 pb-3">
               <div>
-                <h2 className="text-2xl sm:text-3xl font-bold text-cyan-300 drop-shadow-md">
-                  {activeGallery.title}
+                <h2 className="text-2xl sm:text-3xl font-bold text-cyan-300 drop-shadow-md flex items-center space-x-2">
+                  <span>{activeGallery.icon}</span>
+                  <span>{activeGallery.title}</span>
                 </h2>
-                {/*<p className="text-xs text-gray-300 mt-0.5">
-                  Elemento {currentIndex + 1} de {totalItems} {isVideoItem ? "(Video)" : "(Haz clic para ampliar foto)"}
-                </p>*/}
               </div>
               <button
                 onClick={() => setActiveGalleryKey(null)}
-                className="px-4 py-2 bg-gray-900/80 hover:bg-gray-700 border border-gray-600 rounded-lg text-sm font-medium transition backdrop-blur-md cursor-pointer text-white"
+                className="px-4 py-2 bg-green-400/40 hover:bg-green-500/40 border border-gray-600 rounded-lg text-sm font-medium transition backdrop-blur-md cursor-pointer text-white"
               >
                 ← Volver al Inicio
               </button>
@@ -234,7 +358,7 @@ export default function App() {
 
             {/* Visor principal */}
             <div 
-              className={`relative w-full h-[480px] sm:h-[540px] rounded-2xl overflow-hidden ${activeGallery.isCleanView ? 'bg-transparent border-none shadow-none' : 'bg-gray-950/80 border border-gray-700/80 shadow-2xl'} flex items-center justify-center group ${isVideoItem ? '' : 'cursor-zoom-in'}`}
+              className={`relative w-full h-[430px] sm:h-[480px] rounded-2xl overflow-hidden ${activeGallery.isCleanView ? 'bg-transparent border-none shadow-none' : 'bg-gray-950/80 border border-gray-700/80 shadow-2xl'} flex items-center justify-center group ${isVideoItem ? '' : 'cursor-zoom-in'}`}
               onClick={() => {
                 if (!isVideoItem) setIsFullscreen(true);
               }}
@@ -245,7 +369,7 @@ export default function App() {
                   key={currentItem.image}
                   src={currentItem.image} 
                   controls 
-                  className="w-full h-full object-contain max-h-[540px] z-10"
+                  className="w-full h-full object-contain max-h-[480px] z-10"
                 />
               ) : (
                 <img 
@@ -276,7 +400,7 @@ export default function App() {
                 </span>
               </button>
 
-              {activeGallery.showDetails && (
+              {activeGallery.showDetails && activeGallery.title !== "Tablas y Datos" && (
                 <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/95 via-black/80 to-transparent p-5 backdrop-blur-sm space-y-1 z-10 pointer-events-none">
                   <h3 className="font-bold text-lg sm:text-xl text-white">
                     {currentItem.title}
@@ -299,7 +423,7 @@ export default function App() {
                 className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 cursor-zoom-out animate-fade-in"
                 onClick={() => setIsFullscreen(false)}
               >
-                <div className="relative max-w-7xl max-h-screen w-full h-full flex items-center justify-center">
+                <div className="relative max-w-7xl max-h-screen w-full h-full flex flex-col items-center justify-center p-2">
                   <button 
                     onClick={() => setIsFullscreen(false)}
                     className="absolute top-4 right-4 bg-gray-800/80 hover:bg-red-600 text-white px-4 py-2 rounded-lg font-bold border border-gray-600 transition shadow-lg z-50 cursor-pointer"
@@ -309,8 +433,13 @@ export default function App() {
                   <img 
                     src={currentItem.image} 
                     alt="Pantalla Completa" 
-                    className="max-w-full max-h-[95vh] object-contain rounded-md shadow-2xl"
+                    className="max-w-full max-h-[85vh] object-contain rounded-md shadow-2xl mb-3"
                   />
+                  {currentItem?.title && (
+                    <p className="text-cyan-300 text-base sm:text-lg font-medium text-center bg-black/80 px-4 py-2 rounded-lg border border-gray-700">
+                      {currentItem.title}
+                    </p>
+                  )}
                 </div>
               </div>
             )}
