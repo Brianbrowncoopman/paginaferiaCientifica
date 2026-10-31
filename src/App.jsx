@@ -75,7 +75,7 @@ const galleries = {
     ),
     items: [
       { id: 1, image: "/afiches/1.jpeg" },
-      { id: 2, image: "/afiches/2.png" }
+      {/*{ id: 2, image: "/afiches/2.png" }*/}
     ]
   },
   5: {
