@@ -12,42 +12,89 @@ const checkIsVideo = (url) => {
 const galleries = {
   1: {
     title: "Imagenes Microscopio",
-    showDetails: true,
-    // Icono de microscopio / lente
+    isVerticalList: true, // Mostrado en lista vertical hacia abajo
     icon: (
       <svg className="w-5 h-5 text-cyan-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"></path>
       </svg>
     ),
-    items: Array.from({ length: 60 }, (_, i) => ({
-      id: i + 1,
-      title: `Muestra N° ${i + 1}`,
-      desc: `Extracción y análisis de salinidad en el punto ${i + 1} de la costa.`,
-      image: "/imagen1.jpeg",
-      caption: `Figura 1.${i + 1}: Muestreo in situ en Algarrobo.`
-    }))
+    items: [
+      { id: 1, image: "/fotosmicroscopio/ameba.jpeg", title: "Ameba" },
+      { id: 2, image: "/fotosmicroscopio/amebamicroscopioporcien.jpeg", title: "Ameba (100x)" },
+      { id: 3, image: "/fotosmicroscopio/amebaporcientres.jpeg", title: "Ameba (Detalle)" },
+      { id: 4, image: "/fotosmicroscopio/amebatestacea.jpeg", title: "Ameba Testácea" },
+      { id: 5, image: "/fotosmicroscopio/amebaycoloniademicroalgas.jpeg", title: "Ameba y Colonia de Microalgas" },
+      { id: 6, image: "/fotosmicroscopio/coloniadefitoplancton.jpeg", title: "Colonia de Fitoplancton" },
+      { id: 7, image: "/fotosmicroscopio/coloniademicroalgascuatro.jpeg", title: "Colonia de Microalgas N° 4" },
+      { id: 8, image: "/fotosmicroscopio/coloniademicroalgaycristalesdesal.jpeg", title: "Colonia de Microalga y Cristales de Sal" },
+      { id: 9, image: "/fotosmicroscopio/conjuntodemateriaorganica.jpeg", title: "Conjunto de Materia Orgánica" },
+      { id: 10, image: "/fotosmicroscopio/conjuntodemateriaorganicados.jpeg", title: "Conjunto de Materia Orgánica N° 2" },
+      { id: 11, image: "/fotosmicroscopio/conjuntodemicroalgas.jpeg", title: "Conjunto de Microalgas" },
+      { id: 12, image: "/fotosmicroscopio/criptofito.jpeg", title: "Criptófito" },
+      { id: 13, image: "/fotosmicroscopio/cristaldesal.jpeg", title: "Cristal de Sal" },
+      { id: 14, image: "/fotosmicroscopio/cristaldesalporcien.jpeg", title: "Cristal de Sal (100x)" },
+      { id: 15, image: "/fotosmicroscopio/diatomea.jpeg", title: "Diatomea" },
+      { id: 16, image: "/fotosmicroscopio/diatomeapennada.jpeg", title: "Diatomea Pennada" },
+      { id: 17, image: "/fotosmicroscopio/diatomeaporcien.jpeg", title: "Diatomea (100x)" },
+      { id: 18, image: "/fotosmicroscopio/diatomeaporciendos.jpeg", title: "Diatomea (100x) N° 2" },
+      { id: 19, image: "/fotosmicroscopio/diatomeaporcientres.jpeg", title: "Diatomea (100x) N° 3" },
+      { id: 20, image: "/fotosmicroscopio/diatomeaycristaldesal2.jpeg", title: "Diatomea y Cristal de Sal" },
+      { id: 21, image: "/fotosmicroscopio/diatomeayconjuntodemateriaorganica.jpeg", title: "Diatomea y Conjunto de Materia Organica" },
+      { id: 22, image: "/fotosmicroscopio/dinoflageladodelgeneroprorocentrum.jpeg", title: "Dinoflagelado del género Prorocentrum" },
+      { id: 23, image: "/fotosmicroscopio/fitoplancton.jpeg", title: "Fitoplancton" },
+      { id: 24, image: "/fotosmicroscopio/materiaorganicaporcien.jpeg", title: "Materia Orgánica (100x)" },
+      { id: 25, image: "/fotosmicroscopio/microalga.jpeg", title: "Microalga" },
+      { id: 26, image: "/fotosmicroscopio/microalgados.jpeg", title: "Microalgas (100x)" },
+      { id: 27, image: "/fotosmicroscopio/microalendescompocicion.jpeg", title: "Microalga en Descomposición" },
+      { id: 28, image: "/fotosmicroscopio/microalgasydeiatomea.jpeg", title: "Microalgas y Diatomea" },
+      { id: 29, image: "/fotosmicroscopio/protozoociliado.jpeg", title: "Protozoo Ciliado" },
+      { id: 30, image: "/fotosmicroscopio/quistederesistenciadeprotozoo.jpeg", title: "Quista de Resistencia de Protozoo " },
+      { id: 31, image: "/fotosmicroscopio/quistederesistenciadeprotozoodos.jpeg", title: "Quista de Resistencia de Protozoo N° 2" }
+    ]
   },
   2: {
     title: "Imagenes Cultivo",
-    showDetails: true,
-    // Icono de cultivo / matraz de laboratorio
+    isVerticalList: true, // Mostrado en lista vertical hacia abajo igual que Microscopio
     icon: (
       <svg className="w-5 h-5 text-cyan-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 5H9L8 4zM6 18h12a2 2 0 002-2v-1a6 6 0 00-6-6h-4a6 6 0 00-6 6v1a2 2 0 002 2z"></path>
       </svg>
     ),
-    items: Array.from({ length: 60 }, (_, i) => ({
-      id: i + 1,
-      title: `Microorganismo ${i + 1}`,
-      desc: "Observación al microscopio y conteo de especies.",
-      image: "/imagen1.jpeg",
-      caption: `Figura 2.${i + 1}: Detalle microscópico.`
-    }))
+    items: [
+      // Agrega aquí los archivos reales que tengas dentro de tu carpeta /cultivos/
+      { id: 1, image: "/cultivos/bacteriabacilares.jpeg", title: "Bacterias Bacilares" },
+      { id: 2, image: "/cultivos/bacterioplanctonmarino.jpeg", title: "Bacterioplancton Marino" },
+      { id: 3, image: "/cultivos/coloniadebacterias.jpeg", title: "Colonia de Bacterias" },
+      { id: 4, image: "/cultivos/conjuntodecianobacterias.jpeg", title: "Conjunto de Cianobacterias" },
+      { id: 5, image: "/cultivos/canjuntodemateriaorganicaybacterioplancton.jpeg", title: "Conjunto de Materia Orgánica y Bacterioplancton" },  
+      { id: 6, image: "/cultivos/diatomeacolonial.jpeg", title: "Diatomea Colonia" },
+      { id: 7, image: "/cultivos/diatomeapennada.jpeg", title: "Diatomea Pennada" },
+      { id: 8, image: "/cultivos/diatomeas.jpeg", title: "Diatomeas" },
+      { id: 9, image: "/cultivos/diatomeasdos.jpeg", title: "Diatomeas " },
+      { id: 10, image: "/cultivos/materiaorganicaofibradealgunalga.jpeg", title: "Materia Orgánica o Fibra de Alguna Alga" },
+      { id: 11, image: "/cultivos/microalga.jpeg", title: "Microalgas" },
+      { id: 12, image: "/cultivos/microalgasdos.jpeg", title: "Microalgas N° 2" },
+      { id: 13, image: "/cultivos/microalgasydiatomeas.jpeg", title: "Microalgas y Diatomeas" },
+      { id: 14, image: "/cultivos/microalgasyrestosorganicos.jpeg", title: "Microalgas y Restos Orgánicos" },
+      { id: 15, image: "/cultivos/microplastico.jpeg", title: "Microplástico" },
+      { id: 16, image: "/cultivos/namatodo.jpeg", title: "Namatodo " },
+      { id: 17, image: "/cultivos/pedazodeagaragarnutritivoconbacterias.jpeg", title: "Pedazo de Agar Agar Nutritivo con Bacterias  " },
+      { id: 18, image: "/cultivos/pedazodeagaragarnutritivoconbacteriasdos.jpeg", title: "pedazo de agar agar nutritivo con bacterias 2" },
+      { id: 19, image: "/cultivos/pedazodenematodo(gusanomicroscopico).jpeg", title: "Pedazo de Nematodo (Gusano Microscópico)" },
+      { id: 20, image: "/cultivos/pequeñoconjuntodemicroalgas.jpeg", title: "Pequeño Conjunto de Microalgas" },
+      { id: 21, image: "/cultivos/protozoo.jpeg", title: "Protozoo" },
+      { id: 22, image: "/cultivos/protozoociliado.jpeg", title: "Protozoo Ciliado" },
+      { id: 23, image: "/cultivos/protozoomicroalgasydiatomeas.jpeg", title: "Protozoo , Microalgas y Diatomeas" },
+      { id: 24, image: "/cultivos/quistedeprotozoociliado.jpeg", title: "Quiste de Protozoo Ciliado" },
+      { id: 25, image: "/cultivos/restosdemateriaorganica.jpeg", title: "Restos de Materia Orgánica" },
+      { id: 26, image: "/cultivos/quistedeprotozoociliado.jpeg", title: "Quiste de Protozoo Ciliado" },
+      { id: 27, image: "/cultivos/restosdemateriaorganica.jpeg", title: "Restos de Materia Orgánica" },
+      { id: 28, image: "/cultivos/rotifero.jpeg", title: "Rotifero" }
+    ]
   },
   3: {
     title: "Fotos del viaje",
     showDetails: false,
-    // Icono de cámara / viaje
     icon: (
       <svg className="w-5 h-5 text-cyan-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
@@ -67,7 +114,6 @@ const galleries = {
     title: "Afiches",
     showDetails: false,
     isCleanView: true,
-    // Icono de afiche / documento
     icon: (
       <svg className="w-5 h-5 text-cyan-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
@@ -75,7 +121,8 @@ const galleries = {
     ),
     items: [
       { id: 1, image: "/afiches/1.jpeg" },
-      {/*{ id: 2, image: "/afiches/2.png" }*/}
+      { id: 2, image: "/afiches/2.jpeg" },
+      { id: 3, image: "/afiches/3.jpeg" },
     ]
   },
   5: {
@@ -83,7 +130,6 @@ const galleries = {
     isPoster: true,
     question: "¿Cómo la salinidad de los distintos cuerpos de agua afecta la biodiversidad de microorganismos de la línea costera de Algarrobo?",
     hypothesis: "El aumento de la salinidad en la línea costera de Algarrobo reduce la riqueza y diversidad de microorganismos dando como resultado un dominio de especies halófilas y halotolerantes.",
-    // Icono de póster / presentación
     icon: (
       <svg className="w-5 h-5 text-cyan-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
@@ -95,8 +141,7 @@ const galleries = {
   },
   6: {
     title: "Tablas y Datos",
-    isVerticalList: true, // NUEVO: Identificador para mostrarlo en lista vertical hacia abajo
-    // Icono de tablas / datos
+    isVerticalList: true, // Mostrado en lista vertical hacia abajo
     icon: (
       <svg className="w-5 h-5 text-cyan-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
@@ -108,10 +153,14 @@ const galleries = {
       { id: 3, image: "/tablas/tabladedistribuciondeplacas.jpeg", title: "Tabla de Distribución de Placas" },
       { id: 4, image: "/tablas/tabladeobservacionsuperficialdeplacasdia1.jpeg", title: "Tabla de observación superficial de placas día 1" },
       { id: 5, image: "/tablas/tabladeobservacionsuperficialdeplacasdia2.jpeg", title: "Tabla de observación superficial de placas día 2" },
-      { id: 6, image: "/tablas/graficodedispercionsobrerelacionentresalinidadinicialyfinal.jpeg", title: "Grafico de dispersión sobre relación entre salinidad inicial y final" },
-      { id: 7, image: "/tablas/graficodelineassobrelarealcindelasalinidadconelniveldeoxido.jpeg", title: "Gráfico de líneas sobre la relación de la salinidad con el nivel de óxido" },
-      { id: 8, image: "/tablas/graficodebarrassobreelpromediodesalinidadinicialconlasalinidadfinal.jpeg", title: "Grafico de barras sobre el promedio de salinidad inicial con la salinidad final" },
-      { id: 9, image: "/tablas/graficodebarrassobreelpromediodesalinidadsegunloscuerposdeagua.jpeg", title: "Grafico de barras sobre el promedio de salinidad según los cuerpos de agua" }
+      { id: 6, image: "/tablas/tabladerelacionentresalinidadfinalynivelnumericodeoxidodo.jpeg", title: "Tabla de relación entre salinidad final e nivel numérico de óxido" },
+       { id: 7, image: "/tablas/tabladerepresentacionnumericadeoxidocualitativo.jpeg", title: "Tabla de representación numérica de óxido cualitativo" },
+      { id: 8, image: "/tablas/graficodedispercionsobrerelacionentresalinidadinicialyfinal.jpeg", title: "Grafico de dispersión sobre relación entre salinidad inicial y final" },
+      { id: 9, image: "/tablas/salinidadfinalyneveldeoxidonumerico.jpeg", title: "Grafico de salinidad final y nivel de óxido numérico" },
+      { id: 10, image: "/tablas/graficodebarrassobreelpromediodesalinidadinicialconlasalinidadfinal.jpeg", title: "Grafico de barras sobre el promedio de salinidad inicial con la salinidad final" },
+      { id: 11, image: "/tablas/graficodebarrassobreelpromediodesalinidadsegunloscuerposdeagua.jpeg", title: "Grafico de barras sobre el promedio de salinidad según los cuerpos de agua" },
+      { id: 12, image: "/tablas/tabladeobservacionsuperficialdeplacasdiacinco.jpeg", title: "Tabla de observación superficial de placas día 5" },
+      { id: 13, image: "/tablas/tabladeobservaciondecultivosdemuestras.jpeg", title: "Tabla de observación de cultivos de muestra" },
     ]
   }
 };
@@ -120,7 +169,7 @@ export default function App() {
   const [activeGalleryKey, setActiveGalleryKey] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(null); // Estado para imagen ampliada en lista vertical
+  const [selectedImage, setSelectedImage] = useState(null);
 
   const activeGallery = activeGalleryKey ? galleries[activeGalleryKey] : null;
   const totalItems = activeGallery ? activeGallery.items.length : 0;
@@ -270,7 +319,7 @@ export default function App() {
             )}
           </div>
         ) : activeGallery.isVerticalList ? (
-          /* --- MÓDULO TABLAS Y DATOS (LISTA VERTICAL HACIA ABAJO) --- */
+          /* --- MÓDULO LISTA VERTICAL (MICROSCÓPIO, CULTIVOS Y TABLAS) --- */
           <div className="w-full space-y-6 animate-fade-in py-4">
             <div className="flex justify-between items-center border-b border-gray-600/80 pb-3 sticky top-0 bg-black/70 backdrop-blur-md z-30 px-4 py-2 rounded-xl">
               <h2 className="text-2xl sm:text-3xl font-bold text-cyan-300 drop-shadow-md flex items-center space-x-2">
@@ -305,6 +354,11 @@ export default function App() {
                       <p className="text-base sm:text-lg font-semibold text-cyan-200">
                         {item.title}
                       </p>
+                      {item.desc && (
+                        <p className="text-sm text-gray-300 mt-1">
+                          {item.desc}
+                        </p>
+                      )}
                     </div>
                   )}
                 </div>
